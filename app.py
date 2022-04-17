@@ -13,7 +13,13 @@ def build_query(fd, query):
     res = map(lambda v: v.strip(), fd)
     print(res)
     print(query_items)
-    pass
+    for item in query_items:
+        split_item = item.split(":")
+        cmd = split_item[0]
+        if cmd == "filter":
+            arg = split_item[1]
+            res = filter(lambda  v, txt=arg: txt in v, res)
+            print(res)
 
 
 @app.route("/perform_query")
