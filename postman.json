@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "4c555d24-8980-413e-926a-d5a8568e3906",
+		"name": "skypro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "perform_query:filter|map",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file_name",
+							"value": "apache_logs.txt",
+							"type": "text"
+						},
+						{
+							"key": "cmd1",
+							"value": "filter",
+							"type": "text"
+						},
+						{
+							"key": "value1",
+							"value": "GET",
+							"type": "text"
+						},
+						{
+							"key": "cmd2",
+							"value": "map",
+							"type": "text"
+						},
+						{
+							"key": "value2",
+							"value": "0",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/perform_query",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"perform_query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "perform_query:map|unique",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file_name",
+							"value": "apache_logs.txt",
+							"type": "text"
+						},
+						{
+							"key": "cmd1",
+							"value": "map",
+							"type": "text"
+						},
+						{
+							"key": "value1",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "cmd2",
+							"value": "unique",
+							"type": "text"
+						},
+						{
+							"key": "value2",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/perform_query",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"perform_query"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
