@@ -19,7 +19,11 @@ def build_query(fd, query):
         if cmd == "filter":
             arg = split_item[1]
             res = filter(lambda  v, txt=arg: txt in v, res)
-            print(res)
+
+        if cmd == "map":
+            arg = split_item[1]
+            res = map(lambda v, idx=arg: v.split(" ")[idx], res)
+        print(list(res))
 
 
 @app.route("/perform_query")
