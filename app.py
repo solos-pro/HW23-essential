@@ -8,7 +8,11 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-def build_query():
+def build_query(fd, query):
+    query_items = query.split("|")
+    res = map(lambda v: v.strip(), fd)
+    print(res)
+    print(query_items)
     pass
 
 
@@ -25,8 +29,7 @@ def perform_query():
         return BadRequest(description=f"{file_name} was not found")
 
     with open(file_path) as fd:
-        print(fd)
-        res = build_query()
+        res = build_query(fd, query)
         content = ''
     return app.response_class(content, content_type="text/plain")
 
