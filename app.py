@@ -16,6 +16,7 @@ def build_query(fd, query):
     for item in query_items:
         split_item = item.split(":")
         cmd = split_item[0]
+
         if cmd == "filter":
             arg = split_item[1]
             res = filter(lambda  v, txt=arg: txt in v, res)
@@ -23,6 +24,11 @@ def build_query(fd, query):
         if cmd == "map":
             arg = split_item[1]
             res = map(lambda v, idx=arg: v.split(" ")[idx], res)
+
+        if cmd == "unique":
+            res = set(res)
+
+
         print(list(res))
 
 
