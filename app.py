@@ -8,6 +8,7 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
+
 def build_query(fd, query):
     query_items = query.split("|")
     res = map(lambda v: v.strip(), fd)
@@ -19,14 +20,28 @@ def build_query(fd, query):
 
         if cmd == "filter":
             arg = split_item[1]
-            res = filter(lambda  v, txt=arg: txt in v, res)
+            res = filter(lambda v, txt=arg: txt in v, res)
 
         if cmd == "map":
-            arg = split_item[1]
+            arg = int(split_item[1])
             res = map(lambda v, idx=arg: v.split(" ")[idx], res)
 
         if cmd == "unique":
             res = set(res)
+
+        if cmd == "sort":
+            arg = split_item[1]
+            if arg == "desc":
+                reverse = True
+            else:
+                reverse = False
+            res = sorted(res, reverse=reverse)
+
+        if cmd == "limit":
+            arg = int(split_item[1])
+            res = list(res)[:arg]
+
+        return res
 
 
         print(list(res))
@@ -46,25 +61,6 @@ def perform_query():
 
     with open(file_path) as fd:
         res = build_query(fd, query)
-        content = ''
+        content = '\n'.join(res)
     return app.response_class(content, content_type="text/plain")
 
-    # получить параметры query и file_name из request.args, при ошибке вернуть ошибку 400
-    # проверить, что файла file_name существует в папке DATA_DIR, при ошибке вернуть ошибку 400
-    # с помощью функционального программирования (функций filter, map), итераторов/генераторов сконструировать запрос
-    # вернуть пользователю сформированный результат
-
-
-"""from flask import Flask
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
-
-
-if __name__ == '__main__':
-    app.run()
-"""

@@ -1,0 +1,16 @@
+GET http://localhost:5000//perform_query?query=map:0&file_name=apache_logs.txt
+
+###
+GET http://localhost:5000//perform_query?query=filter:POST&file_name=apache_logs.txt
+
+###
+GET http://localhost:5000//perform_query?query=unique&file_name=apache_logs.txt
+
+###
+GET http://localhost:5000//perform_query?query=filter:POST&unique&file_name=apache_logs.txt
+
+###
+GET http://localhost:5000//perform_query?query=sort:desc&file_name=apache_logs.txt
+
+###
+#GET http://localhost:5000//perform_query?query=unique:desc&file_name=apache_logs.txt
