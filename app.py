@@ -12,8 +12,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 def build_query(fd, query):
     query_items = query.split("|")
     res = map(lambda v: v.strip(), fd)
-    print(res)
-    print(query_items)
+    # print(res)
+    # print(query_items)
     for item in query_items:
         split_item = item.split(":")
         cmd = split_item[0]
@@ -44,7 +44,7 @@ def build_query(fd, query):
         return res
 
 
-        print(list(res))
+        # print(list(res))
 
 
 @app.route("/perform_query")
