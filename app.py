@@ -64,3 +64,4 @@ def perform_query():
         content = '\n'.join(res)
     return app.response_class(content, content_type="text/plain")
 
+
