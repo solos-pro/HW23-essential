@@ -10,6 +10,7 @@ app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
+
 def slice_limit(it: Iterator, limit: int) -> Iterator:
     i = 0
     for item in it:
@@ -18,6 +19,7 @@ def slice_limit(it: Iterator, limit: int) -> Iterator:
         else:
             break
         i += 1
+
 
 def apply_cmd(it: Iterator, cmd: str, value: str) -> Iterator:
     if cmd == "filter":
@@ -37,6 +39,7 @@ def apply_cmd(it: Iterator, cmd: str, value: str) -> Iterator:
         regex = re.compile(value)
         return filter(lambda v: regex.search(v), it)
     return it
+
 
 def build_query(it: Iterator, cmd1: str, value1: str, cmd2: str, value2: str) -> Iterator:
     res: Iterator = map(lambda v: v.strip(), it)
